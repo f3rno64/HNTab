@@ -19,5 +19,13 @@
     "gulp-rename": "~1.2.0",
     "gulp-clean": "~0.2.4",
     "gulp-jade": "~0.4.2"
+  },
+  "dependencies": {
+    "request": "~2.34.0",
+    "express": "~3.5.0",
+    "cheerio": "~0.13.1",
+    "async": "~0.2.10",
+    "underscore": "~1.6.0",
+    "memory-cache": "0.0.5"
   }
 }
