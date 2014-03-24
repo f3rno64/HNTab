@@ -1,0 +1,23 @@
+{
+  "name": "HNTab",
+  "description": "Hacker News as your new tab page! :D",
+  "author": "Cris Mihalache <cris@spectrumcoding.com>",
+  "version": "0.0.1",
+  "engine": "node >= 0.10.12",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:fernol/HNTab.git"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.7.1",
+    "gulp": "~3.5.6",
+    "gulp-coffee": "~1.4.1",
+    "gulp-concat": "~2.1.7",
+    "gulp-uglify": "~0.2.1",
+    "gulp-minify-css": "~0.3.0",
+    "gulp-stylus": "0.1.0",
+    "gulp-rename": "~1.2.0",
+    "gulp-clean": "~0.2.4",
+    "gulp-jade": "~0.4.2"
+  }
+}

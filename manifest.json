@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+
+  "name": "HN Tab",
+  "description": "Hacker News as your new tab page! :D",
+  "version": "1.0",
+
+  "permissions": [
+    "https://news.ycombinator.com/"
+  ],
+
+  "chrome_url_overrides": {
+    "newtab": "hn.html"
+  }
+}

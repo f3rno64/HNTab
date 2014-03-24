@@ -1,0 +1,27 @@
+doctype html
+html(lang="en" ng-app="HNTab")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+
+    title HN Tab
+
+    link(rel="stylesheet" href="/css/vendor.min.css")
+    link(rel="stylesheet" href="/css/style.min.css")
+
+    link(rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arvo:400,700")
+
+    script(src="/js/vendor/zepto.min.js")
+    script(src="/js/vendor/packery.min.js")
+    script(src="/js/vendor/angular.min.js")
+
+    script(src="/js/hntab.js")
+    script(src="/js/hntab-packery.js")
+
+  body(ng-controller="main")
+    header
+      h1 HN Tab
+
+    ul#content
+      li.item(ng-repeat="item in content" danny-packery)
+        h1 {{ item.title }}
