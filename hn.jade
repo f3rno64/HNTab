@@ -10,7 +10,7 @@ html(lang="en" ng-app="HNTab")
     link(rel="stylesheet" href="/css/style.min.css")
 
     link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arvo:400,700")
-    link(rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css")
+    //- link(rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css")
 
     script(src="/js/vendor/zepto.min.js")
     script(src="/js/vendor/packery.min.js")
@@ -18,17 +18,21 @@ html(lang="en" ng-app="HNTab")
     script(src="/js/vendor/async.min.js")
     script(src="/js/vendor/jquery.ogp.min.js")
 
+    script(src="/js/tracking.js")
+
     script(src="/js/hntab.js")
     script(src="/js/hntab-packery.js")
 
   body(ng-controller="main")
     header
+      a.apps(ng-click="goApps()") Apps
       h1 HN Tab
 
     ul#content
+      .gutter-sizer
+      .grid-sizer
       li.item(ng-if="item.points != null" ng-repeat="item in content | orderBy:'points':true" ng-style="{ background: generateBackground(item) }" danny-packery)
-        h1 {{ item.title | truncate }}
+        .overlay
+          .points {{ item.points }}
+          .title {{ item.title | truncate }}
 
-        .points
-          i.fa.fa-level-up
-          {{ item.points }}

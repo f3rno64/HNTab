@@ -19,6 +19,10 @@ window.HNTab.controller "main", ($scope, $http) ->
     else
       "#2ecc71"
 
+  $scope.goApps = ->
+    _gaq.push ["_trackEvent", "Meta", "Back to Apps"]
+    chrome.tabs.update url: "chrome://apps"
+
   $http.get("http://localhost:5656/api/v1/news")
   .success (content) ->
     $scope.content = content

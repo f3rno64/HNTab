@@ -6,8 +6,9 @@ window.HNTab.directive "dannyPackery", ["$rootScope", ($rootScope) ->
       if $rootScope.packery == undefined or $rootScope.packery == null
 
         $rootScope.packery = new Packery element[0].parentElement,
-          columnWidth: ".item"
-          gutter: 16
+          columnWidth: ".grid-sizer"
+          itemSelector: ".item"
+          gutter: ".gutter-sizer"
 
         $rootScope.packery.bindResize()
         $rootScope.packery.appended element[0]

@@ -9,6 +9,8 @@
     "https://news.ycombinator.com/"
   ],
 
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com/; object-src 'self'",
+
   "chrome_url_overrides": {
     "newtab": "hn.html"
   }
