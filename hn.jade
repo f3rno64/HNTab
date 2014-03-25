@@ -31,7 +31,7 @@ html(lang="en" ng-app="HNTab")
     ul#content
       .gutter-sizer
       .grid-sizer
-      li.item(ng-if="item.points != null" ng-repeat="item in content | orderBy:'points':true" ng-style="{ background: generateBackground(item) }" danny-packery)
+      li.item(ng-if="item.points != null" ng-repeat="item in content | orderBy:'points':true" ng-style="{ background: generateBackground(item) }" ng-click="open(item.url)" danny-packery)
         .overlay
           .points {{ item.points }}
           .title {{ item.title | truncate }}

@@ -13,11 +13,23 @@ window.HNTab.filter "truncate", ->
 
 window.HNTab.controller "main", ($scope, $http) ->
 
+  colors = [
+    "#2ecc71"
+    "#3498db"
+    "#9b59b6"
+    "#f1c40f"
+    "#e67e22"
+    "#e74c3c"
+  ]
+
   $scope.generateBackground = (item) ->
     if item.image
       "url(#{item.image})"
     else
-      "#2ecc71"
+      colors[Math.floor(Math.random() * colors.length)]
+
+  $scope.open = (url) ->
+    window.location = url
 
   $scope.goApps = ->
     _gaq.push ["_trackEvent", "Meta", "Back to Apps"]
