@@ -22,11 +22,13 @@ window.HNTab.controller "main", ($scope, $http) ->
     "#e74c3c"
   ]
 
-  $scope.generateBackground = (item) ->
+  # We need to pass an index so we get a deterministic color for each item, to
+  # not trigger an infinite digest loop oO
+  $scope.generateBackground = (item, index) ->
     if item.image
       "url(#{item.image})"
     else
-      colors[Math.floor(Math.random() * colors.length)]
+      colors[index % 6]
 
   $scope.open = (url) ->
     window.location = url
