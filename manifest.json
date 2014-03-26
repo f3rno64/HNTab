@@ -6,10 +6,13 @@
   "version": "1.0",
 
   "permissions": [
-    "https://news.ycombinator.com/"
+    "https://news.ycombinator.com/",
+    "*://use.typekit.net/*",
+    "webRequest",
+    "webRequestBlocking"
   ],
 
-  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com/; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://use.typekit.net https://ssl.google-analytics.com/; object-src 'self'",
 
   "chrome_url_overrides": {
     "newtab": "hn.html"
