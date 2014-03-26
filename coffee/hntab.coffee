@@ -43,7 +43,7 @@ window.HNTab.controller "main", ($scope, $http) ->
     _gaq.push ["_trackEvent", "Meta", "Back to Apps"]
     chrome.tabs.update url: "chrome://apps"
 
-  $http.get("http://localhost:5656/api/v1/news")
+  $http.get("http://178.79.137.17:5656/api/v1/news")
   .success (content) ->
     content[i].comments_hovered = false for i in [0...content.length]
     $scope.content = content
