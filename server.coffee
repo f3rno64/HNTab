@@ -15,16 +15,18 @@ app.use (req, res, next) ->
   res.header "Access-Control-Allow-Headers", "Content-Type"
   next()
 
-##
-## For the most part, this just piggy-backs on the heroku HN API. We simply
-## attach images to posts :)
-##
+lastCache = -1
+cache.put "news", []
 
 app.get "/api/v1/news", (req, res) ->
 
-  if cache.get "news"
-    res.json cache.get "news"
-  else
+  # Send cached data
+  res.json cache.get "news"
+
+  # If enough time has passed, refresh (two minutes)
+  if Date.now() - lastCache > 1000 * 60 * 2
+
+    lastCache = Date.now()
 
     # Save the request so we can call setMaxListeners on it
     apiCall = request
@@ -86,13 +88,7 @@ app.get "/api/v1/news", (req, res) ->
         imageRequest.setMaxListeners 0
 
       , (err, items) ->
-
-        items = _.filter items, (i) -> i != null
-
-        # 5 minute cache
-        cache.put "news", items, 5 * 60 * 1000
-
-        res.json items
+        cache.put "news", _.filter items, (i) -> i != null
 
     apiCall.setMaxListeners 0
 
