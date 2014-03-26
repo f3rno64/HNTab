@@ -30,8 +30,14 @@ window.HNTab.controller "main", ($scope, $http) ->
     else
       colors[index % 6]
 
-  $scope.open = (url) ->
-    window.location = url
+  $scope.areCommentsHovered = (item) -> item.comments_hovered
+  $scope.setHNHighlight = (item, h) -> item.comments_hovered = h
+
+  $scope.goto = (location, e) ->
+    window.location = location
+
+    e.preventDefault()
+    false
 
   $scope.goApps = ->
     _gaq.push ["_trackEvent", "Meta", "Back to Apps"]
@@ -39,4 +45,5 @@ window.HNTab.controller "main", ($scope, $http) ->
 
   $http.get("http://localhost:5656/api/v1/news")
   .success (content) ->
+    content[i].comments_hovered = false for i in [0...content.length]
     $scope.content = content

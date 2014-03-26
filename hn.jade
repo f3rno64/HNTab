@@ -10,7 +10,7 @@ html(lang="en" ng-app="HNTab")
     link(rel="stylesheet" href="/css/style.min.css")
 
     link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arvo:400,700")
-    //- link(rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css")
+    link(rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css")
 
     script(src="/js/vendor/zepto.min.js")
     script(src="/js/vendor/packery.min.js")
@@ -34,8 +34,17 @@ html(lang="en" ng-app="HNTab")
     ul#content
       .gutter-sizer
       .grid-sizer
-      li.item(ng-if="item.points != null" ng-repeat="(i, item) in content | orderBy:'points':true" ng-style="{ background: generateBackground(item, i) }" ng-click="open(item.url)" danny-packery)
-        .overlay
-          .points {{ item.points }}
-          .title {{ item.title }}
+      li.item(ng-if="item.points != null" ng-repeat="(i, item) in content | orderBy:'points':true" ng-style="{ background: generateBackground(item, i) }" ng-class="{ hnHighlight: areCommentsHovered(item) }" ontouchstart="this.classList.toggle('hover');" danny-packery)
+        .flipper
+          .front
+            .points {{ item.points }}
+            .title {{ item.title }}
+            .domain {{ item.domain }}
+          .back
+            .overlay
+              a.link(ng-href="{{ item.url }}")
+                i.fa.fa-link
+              a.comments(ng-mouseenter="setHNHighlight(item, true)" ng-mouseleave="setHNHighlight(item, false)" ng-href="https://news.ycombinator.com/item?id={{ item.id }}")
+                i.fa.fa-comment-o
+                | {{ item.comments_count }}
 
