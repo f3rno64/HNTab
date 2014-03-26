@@ -12,6 +12,12 @@
     "webRequestBlocking"
   ],
 
+  "icons": {
+    "16": "dist/icons/16.png",
+    "48": "dist/icons/48.png",
+    "128": "dist/icons/128.png"
+  },
+
   "content_security_policy": "script-src 'self' https://use.typekit.net https://ssl.google-analytics.com/; object-src 'self'",
 
   "chrome_url_overrides": {
