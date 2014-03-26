@@ -10,7 +10,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(function(details) {
     requestHeaders.push({
         name: 'referer',
         // Host must match the domain in your Typekit kit settings
-        value: 'https://echhmnlfckdpkjjkaapompkpcafebnhl/'
+        value: 'https://eplecodfkpfgmhjbhicpkappljgldglo/'
     });
     return {
         requestHeaders: requestHeaders
