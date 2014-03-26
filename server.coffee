@@ -28,14 +28,41 @@ app.get "/api/v1/news", (req, res) ->
 
     # Save the request so we can call setMaxListeners on it
     apiCall = request
-      url: "http://node-hnapi.herokuapp.com/news"
+      url: "https://news.ycombinator.com/"
       method: "get"
-      timeout: 2000
-      maxRedirects: 5
     , (err, response, body) ->
       return res.send 500 if err
 
-      async.mapLimit JSON.parse(body), 9, (item, done) ->
+      $ = cheerio.load body
+      items = []
+
+      content = $ "body > center > table > tr:nth-child(3) table tr"
+
+      for row in [0...content.length] by 3
+        rawTitle = content[row]
+        rawDetails = $(content[row + 1]).find(".subtext")
+
+        item =
+          title: $(rawTitle).find(".title a").text()
+          url: $(rawTitle).find(".title a").attr "href"
+
+          domain: $(rawTitle).find(".title span.comhead").text()
+          points: Number $(rawDetails).find("> span").text().split(" ")[0]
+          comment_count: Number $(rawDetails).find("a:last-child").text().split(" ")[0]
+          id: $(rawDetails).find("a:last-child").attr("href")
+
+        # Process id
+        if item.id
+          item.id = Number item.id.split("id=")[1]
+        else
+          delete item.id
+
+        # Clean up domain
+        item.domain = "#{item.domain}".split("(").join("").split(")").join("").trim()
+
+        items.push item
+
+      async.mapLimit items, 9, (item, done) ->
 
         # Same as above
         imageRequest = request

@@ -46,5 +46,5 @@ html(lang="en" ng-app="HNTab")
                 i.fa.fa-link
               a.comments(ng-mouseenter="setHNHighlight(item, true)" ng-mouseleave="setHNHighlight(item, false)" ng-href="https://news.ycombinator.com/item?id={{ item.id }}")
                 i.fa.fa-comment-o
-                | {{ item.comments_count }}
+                | {{ item.comment_count }}
 
