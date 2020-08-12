@@ -21,7 +21,7 @@
     "gulp-jade": "~0.4.2"
   },
   "dependencies": {
-    "request": "~2.34.0",
+    "request": "~2.88.2",
     "express": "~3.5.0",
     "cheerio": "~0.13.1",
     "async": "~0.2.10",
