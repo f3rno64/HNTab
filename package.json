@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "request": "~2.34.0",
-    "express": "~3.5.0",
+    "express": "~4.17.1",
     "cheerio": "~0.13.1",
     "async": "~0.2.10",
     "underscore": "~1.6.0",
